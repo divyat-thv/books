@@ -491,6 +491,76 @@ body {
   .book-grid { grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); }
 }
 
+/* ── Meet the Masters Banner ── */
+.masters-banner {
+  border-radius: var(--radius-2xl);
+  padding: var(--space-2xl) var(--space-2xl);
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(255,210,127,0.3);
+  box-shadow: 0 0 60px rgba(255,165,0,0.08), var(--shadow-glass);
+}
+.masters-glow {
+  position: absolute; top: -60px; right: -60px;
+  width: 340px; height: 340px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,210,127,0.25) 0%, rgba(247,168,196,0.12) 50%, transparent 70%);
+  pointer-events: none; animation: masters-pulse 4s ease-in-out infinite;
+}
+@keyframes masters-pulse {
+  0%,100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+.masters-content {
+  display: flex; align-items: center; gap: var(--space-2xl);
+  flex-wrap: wrap; position: relative; z-index: 2;
+}
+.masters-badge { flex-shrink: 0; }
+.masters-text { flex: 1; min-width: 220px; }
+.masters-eyebrow {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  opacity: 0.45; margin-bottom: var(--space-xs);
+}
+.masters-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  background: linear-gradient(135deg, #ffd27f, #f7a8c4, #b490f5);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1.1; margin-bottom: var(--space-sm);
+}
+.masters-desc {
+  font-size: 0.88rem; opacity: 0.65; line-height: 1.65; max-width: 480px;
+}
+.masters-btn {
+  display: inline-flex; align-items: center;
+  padding: 16px 36px; border-radius: var(--radius-full);
+  text-decoration: none; font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em;
+  color: #fff; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(255,210,127,.55), rgba(247,168,196,.55), rgba(180,144,245,.55));
+  border: 1px solid rgba(255,210,127,.55);
+  box-shadow: 0 6px 32px rgba(255,165,0,.3), 0 2px 8px rgba(180,144,245,.2), var(--reflection-inner);
+  position: relative; overflow: hidden;
+  transition: transform var(--dur-fast) var(--ease-liquid), box-shadow var(--dur-fast);
+}
+.masters-btn::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--reflection-top); border-radius: inherit; pointer-events: none;
+}
+.masters-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 48px rgba(255,165,0,.45), 0 4px 16px rgba(180,144,245,.3);
+}
+.masters-btn-inner { display: flex; align-items: center; gap: 10px; position: relative; z-index: 1; }
+.masters-arrow {
+  font-size: 1.2rem;
+  transition: transform var(--dur-fast) var(--ease-liquid);
+}
+.masters-btn:hover .masters-arrow { transform: translateX(5px); }
+
+@media (max-width: 700px) {
+  .masters-content { flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
+  .masters-btn { width: 100%; justify-content: center; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .scene__blob { animation: none !important; }
@@ -985,6 +1055,31 @@ body {
           <button class="glass glass-btn glass-btn--primary">Subscribe</button>
         </div>
         <p style="font-size:0.68rem;opacity:0.35">No spam, unsubscribe anytime. We respect your privacy.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- MEET THE MASTERS BANNER -->
+    <section class="section" style="padding:var(--space-2xl) 0">
+      <div class="glass masters-banner">
+        <div class="masters-glow" aria-hidden="true"></div>
+        <div class="masters-content">
+          <div class="masters-badge">
+            <span class="glass-badge badge-amber"><span class="badge-dot"></span>Partner</span>
+          </div>
+          <div class="masters-text">
+            <div class="masters-eyebrow">Learn from the best</div>
+            <h3 class="masters-title">Meet the Masters</h3>
+            <p class="masters-desc">Go beyond reading — learn directly from world-class authors, thinkers, and experts. Exclusive masterclasses, live sessions and curated learning paths await you.</p>
+          </div>
+          <a href="https://meetthemasters.in" target="_blank" rel="noopener noreferrer" class="masters-btn">
+            <span class="masters-btn-inner">
+              <span>Visit Meet the Masters</span>
+              <span class="masters-arrow">→</span>
+            </span>
+          </a>
+        </div>
       </div>
     </section>
 
